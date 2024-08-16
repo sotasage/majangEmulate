@@ -28,6 +28,7 @@ const RankingList = (props: Props) => {
             setDocList(V);
         })()
     }, []);
+    const Rflag = props.Rflag;
     useEffect(() => {
         (async () => {
             const q = query(collection(db, "datas"), orderBy("score", "desc"));
@@ -38,7 +39,7 @@ const RankingList = (props: Props) => {
             });
             setDocList(V);
         })()
-    }, [props.Rflag]);
+    }, [Rflag]);
     /*const unsub = onSnapshot(query(collection(db, "datas"), orderBy("score", "desc")), (querySnapshot) => {
         let V: DocListType[] = [];
         querySnapshot.forEach((doc) => {

@@ -25,6 +25,7 @@ const AddResultForm = (props: Props) => {
     const handleChangeName = (e: any) => {
         setSelectedOptionName(e);
     };
+    const Aflag = props.flag;
     useEffect(() => {
         (async() => {
             if (selectedOptionName == null) {
@@ -50,7 +51,7 @@ const AddResultForm = (props: Props) => {
                 }
             }
         })()
-    }, [props.flag]);
+    }, [Aflag]);
     
     return (    
         <div className="w-90 mb-4 flex justify-center items-center gap-4">
