@@ -4,6 +4,7 @@ import { db } from '../firebase';
 import { doc, getDoc, onSnapshot, orderBy, query } from "firebase/firestore";
 
 type DocListType = {
+    id: string;
     name: string;
     score: number;
 }
@@ -23,7 +24,7 @@ const RankingList = (props: Props) => {
             let V: DocListType[] = [];
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
-                V.push({name: doc.id, score: doc.data().score})
+                V.push({id: doc.id, name: doc.id, score: doc.data().score})
             });
             setDocList(V);
         })()
@@ -35,7 +36,7 @@ const RankingList = (props: Props) => {
             let V: DocListType[] = [];
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
-                V.push({name: doc.id, score: doc.data().score})
+                V.push({id: doc.id, name: doc.id, score: doc.data().score})
             });
             setDocList(V);
         })()
@@ -61,7 +62,7 @@ const RankingList = (props: Props) => {
                 </thead>
                 <tbody>
                     {DocList.map((entry, index) => (
-                        <tr>
+                        <tr key={entry.id}>
                             <td className="border border-gray-300 p-2 text-center">{index + 1}</td>
                             <td className="border border-gray-300 p-2 text-center">{entry.name}</td>
                             <td className="border border-gray-300 p-2 text-center">{entry.score}</td>
