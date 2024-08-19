@@ -32,7 +32,7 @@ const DeletePlayer = (props: Props) => {
         },
     };
     const [options, setOptions] = useState<OptionType[]>([]);
-    const handleAddClick = async () => {
+    const handleDeleteClick = async () => {
         let O: {value: string, label: string}[] = [];
         const querySnapshot = await getDocs(collection(db, "datas"));
         querySnapshot.forEach((doc) => {
@@ -58,7 +58,7 @@ const DeletePlayer = (props: Props) => {
     return (
         <div className="max-w-md mx-auto my-8">
             <button
-                onClick={handleAddClick}
+                onClick={handleDeleteClick}
                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
             >
                 プレイヤーを削除
