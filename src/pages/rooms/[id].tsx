@@ -20,7 +20,7 @@ export default function Home() {
       setRoomID(null);  // id が string でない場合は null にセット
     }
     console.log(roomID);
-  }, [router.isReady])
+  }, [router.isReady, router.query.id])
 
   if (!roomID) {
     console.error("Room ID is null or undefined");
