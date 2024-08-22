@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import Modal from "react-modal";
 import { doc, updateDoc } from "firebase/firestore";
-import Select, { MultiValue, ActionMeta } from 'react-select';
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
 
 type Props = {
     SetRflag: React.Dispatch<React.SetStateAction<boolean>>;
     Rflag: boolean;
+    roomID: string;
 };
 
-Modal.setAppElement(".parents");
+Modal.setAppElement('#__next');
 
 const Reset = (props: Props) => {
     const [ modalIsOpen, setIsOpen ] = useState(false);
@@ -27,9 +27,9 @@ const Reset = (props: Props) => {
         },
     };
     const handleYesClick = async () => {
-        const querySnapshot = await getDocs(collection(db, "datas"));
+        const querySnapshot = await getDocs(collection(db, "rooms", props.roomID, "players"));
         querySnapshot.forEach(async (d) => {
-            const washingtonRef = doc(db, "datas", d.id);
+            const washingtonRef = doc(db, "rooms", props.roomID, "players", d.id);
             await updateDoc(washingtonRef, {
                 score: 0
             });

@@ -13,9 +13,10 @@ type OptionType = {
 type Props = {
     SetRflag: React.Dispatch<React.SetStateAction<boolean>>;
     Rflag: boolean;
+    roomID: string;
 };
 
-Modal.setAppElement(".parents");
+Modal.setAppElement('#__next');
 
 const DeletePlayer = (props: Props) => {
     const [ modalIsOpen, setIsOpen ] = useState(false);
@@ -34,7 +35,7 @@ const DeletePlayer = (props: Props) => {
     const [options, setOptions] = useState<OptionType[]>([]);
     const handleDeleteClick = async () => {
         let O: {value: string, label: string}[] = [];
-        const querySnapshot = await getDocs(collection(db, "datas"));
+        const querySnapshot = await getDocs(collection(db, "rooms", props.roomID, "players"));
         querySnapshot.forEach((doc) => {
             O.push({value: doc.id, label: doc.id})
         });
@@ -48,7 +49,7 @@ const DeletePlayer = (props: Props) => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {   
         event.preventDefault();
         selectedOptionName.map(async (d) => {
-            await deleteDoc(doc(db, "datas", d.value));
+            await deleteDoc(doc(db, "rooms", props.roomID, "players", d.value));
         })
         setSelectedOptionName([]);
         setIsOpen(false);

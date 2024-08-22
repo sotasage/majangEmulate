@@ -9,6 +9,7 @@ type Props = {
     place: string;
     SetRflag: React.Dispatch<React.SetStateAction<boolean>>;
     Rflag: boolean;
+    roomID: string;
 }
 
 type OptionType = {
@@ -32,7 +33,7 @@ const AddResultForm = (props: Props) => {
                 console.log('error');
             }
             else {
-                const docRef = doc(db, "datas", selectedOptionName.value);
+                const docRef = doc(db, "rooms", props.roomID, "players", selectedOptionName.value);
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     let sum = docSnap.data().score;

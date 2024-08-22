@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
-import { doc, getDoc, onSnapshot, orderBy, query } from "firebase/firestore";
+import { orderBy, query } from "firebase/firestore";
 
 type DocListType = {
     id: string;
@@ -11,6 +11,7 @@ type DocListType = {
 
 type Props = {
     Rflag: boolean;
+    roomID: string;
 };
 
 const RankingList = (props: Props) => {
@@ -20,7 +21,11 @@ const RankingList = (props: Props) => {
     }
     useEffect(() => {
         (async () => {
-            const q = query(collection(db, "datas"), orderBy("score", "desc"));
+            if (!props.roomID) {
+                console.error("Room ID is null or undefined");
+                return;
+            }
+            const q = query(collection(db, "rooms", props.roomID, "players"), orderBy("score", "desc"));
             let V: DocListType[] = [];
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {
@@ -32,7 +37,11 @@ const RankingList = (props: Props) => {
     const Rflag = props.Rflag;
     useEffect(() => {
         (async () => {
-            const q = query(collection(db, "datas"), orderBy("score", "desc"));
+            if (!props.roomID) {
+                console.error("Room ID is null or undefined");
+                return;
+            }
+            const q = query(collection(db, "rooms", props.roomID, "players"), orderBy("score", "desc"));
             let V: DocListType[] = [];
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach((doc) => {

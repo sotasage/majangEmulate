@@ -1,33 +1,33 @@
 import React, { useState } from 'react';
-import { doc, setDoc, collection } from 'firebase/firestore';
+import { collection, addDoc } from 'firebase/firestore';
 import Modal from "react-modal";
 import { db } from '../firebase';
 
+Modal.setAppElement(".parents");
+
 type Props = {
-    SetRflag: React.Dispatch<React.SetStateAction<boolean>>;
-    Rflag: boolean;
-    roomID: string
+    flag: boolean;
+    set: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-Modal.setAppElement('#__next');
-
-const AddPlayer = (props: Props) => {
-    const [name, setName] = useState('');
+const AddRoom = (props: Props) => {
+    const [room, setRoom] = useState('');
     const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setName(event.target.value);
+        setRoom(event.target.value);
     };
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         
         // Firestoreにデータを追加
         try {
-            const roomRef = collection(db, "rooms", props.roomID, "players");
-            await setDoc(doc(db, "rooms", props.roomID, "players", name), {
-                score: 0
+            const docRef = await addDoc(collection(db, "rooms"), {
+                name: room,
             });
-            setName('');
+            collection(db, "rooms", docRef.id, "players");
+            const ref = collection(db, "rooms", )
+            setRoom('');
             setIsOpen(false);
-            props.SetRflag(!props.Rflag);
+            props.set(!props.flag);
         } catch (e) {
             console.error("error adding document", e)
         }
@@ -52,7 +52,7 @@ const AddPlayer = (props: Props) => {
                 onClick={() => setIsOpen(true)}
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
             >
-                プレイヤーを追加
+                ルームを追加
             </button>
             <div className="parents">
                 <Modal isOpen={modalIsOpen} style={customStyles}>
@@ -61,7 +61,7 @@ const AddPlayer = (props: Props) => {
                             <label className="block text-gray-700">名前</label>
                             <input
                                 type="text"
-                                value={name}
+                                value={room}
                                 onChange={handleNameChange}
                                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                             />
@@ -87,4 +87,4 @@ const AddPlayer = (props: Props) => {
     );
 };
 
-export default AddPlayer;
+export default AddRoom;
