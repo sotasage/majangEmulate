@@ -37,11 +37,11 @@ const AddResultForm = (props: Props) => {
                 const docSnap = await getDoc(docRef);
                 if (docSnap.exists()) {
                     let sum = docSnap.data().score;
-                    sum += (Number(score) - 30000) / 1000;
-                    if (props.place == "1") sum += 50;
-                    else if (props.place == "2") sum += 10;
-                    else if (props.place == "3") sum -= 10;
-                    else if (props.place == "4") sum -= 30;
+                    sum += (Number(score) - 25000) / 1000;
+                    if (props.place == "1") sum += 15;
+                    else if (props.place == "2") sum += 5;
+                    else if (props.place == "3") sum -= 5;
+                    else if (props.place == "4") sum -= 15;
                     await updateDoc(docRef, {
                         score: sum
                     });
