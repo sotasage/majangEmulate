@@ -3,7 +3,6 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from '../firebase';
 import Modal from "react-modal";
 import AddResultForm from "./AddResultForm"
-import { propagateServerField } from 'next/dist/server/lib/render-server';
 
 type OptionType = {
     value: string;
@@ -13,15 +12,16 @@ type OptionType = {
 type Props = {
     SetRflag: React.Dispatch<React.SetStateAction<boolean>>;
     Rflag: boolean;
+    roomID: string;
 };
 
-Modal.setAppElement(".parents");
+Modal.setAppElement('#__next');
 
 const AddResult = (props: Props) => {
     const [options, setOptions] = useState<OptionType[]>([]);
     const handleAddClick = async () => {
         let O: {value: string, label: string}[] = [];
-        const querySnapshot = await getDocs(collection(db, "datas"));
+        const querySnapshot = await getDocs(collection(db, "rooms", props.roomID, "players"));
         querySnapshot.forEach((doc) => {
             O.push({value: doc.id, label: doc.id})
         });
@@ -38,7 +38,7 @@ const AddResult = (props: Props) => {
           marginRight: "0%",
           transform: "translate(-50%, -50%)",
           minWidth: "0%",
-          maxWidth: "35%",
+          maxWidth: "50%",
         },
     };
     const [ SubmitFlag, setSubmitFlag ] = useState(false);
@@ -60,10 +60,10 @@ const AddResult = (props: Props) => {
                 <Modal isOpen={modalIsOpen} style={customStyles}>
                     <div className="bg-white w-100 p-6">
                         <form onSubmit={handleSubmit} className="mt-4 p-4 bg-white rounded-lg">
-                            <AddResultForm array={options} flag={SubmitFlag} place="1" SetRflag={props.SetRflag} Rflag={props.Rflag} />
-                            <AddResultForm array={options} flag={SubmitFlag} place="2" SetRflag={props.SetRflag} Rflag={props.Rflag} />
-                            <AddResultForm array={options} flag={SubmitFlag} place="3" SetRflag={props.SetRflag} Rflag={props.Rflag} />
-                            <AddResultForm array={options} flag={SubmitFlag} place="4" SetRflag={props.SetRflag} Rflag={props.Rflag} />
+                            <AddResultForm array={options} flag={SubmitFlag} place="1" SetRflag={props.SetRflag} Rflag={props.Rflag} roomID={props.roomID} />
+                            <AddResultForm array={options} flag={SubmitFlag} place="2" SetRflag={props.SetRflag} Rflag={props.Rflag} roomID={props.roomID} />
+                            <AddResultForm array={options} flag={SubmitFlag} place="3" SetRflag={props.SetRflag} Rflag={props.Rflag} roomID={props.roomID} />
+                            <AddResultForm array={options} flag={SubmitFlag} place="4" SetRflag={props.SetRflag} Rflag={props.Rflag} roomID={props.roomID} />
                             <div className="mt-10 mb-2 flex justify-center items-center gap-7">
                                 <button
                                     type="submit"
