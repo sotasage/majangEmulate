@@ -37,8 +37,8 @@ const AddResult = (props: Props) => {
           bottom: "auto",
           marginRight: "0%",
           transform: "translate(-50%, -50%)",
-          minWidth: "0%",
-          maxWidth: "50%",
+          width: "50%",
+          minWidth: "350px",
         },
     };
     const [ SubmitFlag, setSubmitFlag ] = useState(false);
@@ -49,7 +49,7 @@ const AddResult = (props: Props) => {
     };
     
     return (
-        <div className="max-w-md mx-auto my-8">
+        <div className="max-w-md mx-auto mt-5 md:my-8">
             <button
                 onClick={handleAddClick}
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
@@ -58,7 +58,7 @@ const AddResult = (props: Props) => {
             </button>
             <div className="parents">
                 <Modal isOpen={modalIsOpen} style={customStyles}>
-                    <div className="bg-white w-100 p-6">
+                    <div className="bg-white w-full">
                         <form onSubmit={handleSubmit} className="mt-4 p-4 bg-white rounded-lg">
                             <AddResultForm array={options} flag={SubmitFlag} place="1" SetRflag={props.SetRflag} Rflag={props.Rflag} roomID={props.roomID} />
                             <AddResultForm array={options} flag={SubmitFlag} place="2" SetRflag={props.SetRflag} Rflag={props.Rflag} roomID={props.roomID} />

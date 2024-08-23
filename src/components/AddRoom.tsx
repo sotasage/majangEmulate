@@ -58,7 +58,7 @@ const AddRoom = (props: Props) => {
                 <Modal isOpen={modalIsOpen} style={customStyles}>
                     <form onSubmit={handleSubmit} className="p-1 rounded-lg">
                         <div className="mb-4">
-                            <label className="block text-gray-700">名前</label>
+                            <label className="block text-gray-700">ルーム名</label>
                             <input
                                 type="text"
                                 value={room}
@@ -69,13 +69,13 @@ const AddRoom = (props: Props) => {
                         <div className="mt-6 mb-2 flex justify-center items-center gap-7">
                             <button
                                 type="submit"
-                                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                                className="px-3 py-2 md:px-4 bg-green-500 text-white rounded hover:bg-green-600"
                             >
                                 決定
                             </button>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                                className="px-3 py-2 md:px-4 bg-green-500 text-white rounded hover:bg-green-600"
                             >
                                 閉じる
                             </button>

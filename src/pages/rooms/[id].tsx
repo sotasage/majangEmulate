@@ -39,11 +39,15 @@ export default function Home() {
           </button>
         </div>
         <div>
-            <div className="flex justify-center items-center gap-4">
-            <AddPlayer SetRflag={setUpdateRankingFlag} Rflag={UpdateRankingFlag} roomID={roomID} />
-            <AddResult SetRflag={setUpdateRankingFlag} Rflag={UpdateRankingFlag} roomID={roomID} />
-            <DeletePlayer SetRflag={setUpdateRankingFlag} Rflag={UpdateRankingFlag} roomID={roomID} />
-            <Reset SetRflag={setUpdateRankingFlag} Rflag={UpdateRankingFlag} roomID={roomID} />
+            <div className="md:flex gap-x-4">
+              <div className="flex justify-center items-center gap-x-4">
+                <AddPlayer SetRflag={setUpdateRankingFlag} Rflag={UpdateRankingFlag} roomID={roomID} />
+                <AddResult SetRflag={setUpdateRankingFlag} Rflag={UpdateRankingFlag} roomID={roomID} />
+              </div>
+              <div className="flex justify-center items-center gap-x-4 ">
+                <DeletePlayer SetRflag={setUpdateRankingFlag} Rflag={UpdateRankingFlag} roomID={roomID} />
+                <Reset SetRflag={setUpdateRankingFlag} Rflag={UpdateRankingFlag} roomID={roomID} />
+              </div>
             </div>
             <RankingList Rflag={UpdateRankingFlag} roomID={roomID} />
         </div>

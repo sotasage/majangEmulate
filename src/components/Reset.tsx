@@ -22,8 +22,8 @@ const Reset = (props: Props) => {
           bottom: "auto",
           marginRight: "0%",
           transform: "translate(-50%, -50%)",
-          minWidth: "20%",
-          maxWidth: "100%",
+          width: "20%",
+          minWidth: "300px",
         },
     };
     const handleYesClick = async () => {
@@ -39,7 +39,7 @@ const Reset = (props: Props) => {
     };
 
     return (
-        <div className="max-w-md mx-auto my-8">
+        <div className="max-w-md mx-auto mt-2 mb-8 md:my-8">
             <button
                 onClick={() => setIsOpen(true)}
                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
@@ -60,7 +60,7 @@ const Reset = (props: Props) => {
                             onClick={() => setIsOpen(false)}
                             className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
                         >
-                            キャンセル
+                            いいえ
                         </button>
                     </div>
                 </Modal>

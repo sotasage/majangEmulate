@@ -34,7 +34,7 @@ const RoomList = (props: Props) => {
     const router = useRouter();
 
     return (
-        <div className="w-1/4 p-4 bg-white">
+        <div className="w-full md:w-1/4 p-4 bg-white">
             <table className="w-full border-collapse border border-gray-200">
                 <thead>
                     <tr>

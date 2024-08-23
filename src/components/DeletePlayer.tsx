@@ -28,8 +28,8 @@ const DeletePlayer = (props: Props) => {
           bottom: "auto",
           marginRight: "0%",
           transform: "translate(-50%, -50%)",
-          minWidth: "30%",
-          maxWidth: "100%",
+          width: "30%",
+          minWidth: "300px"
         },
     };
     const [options, setOptions] = useState<OptionType[]>([]);
@@ -57,7 +57,7 @@ const DeletePlayer = (props: Props) => {
     };
     
     return (
-        <div className="max-w-md mx-auto my-8">
+        <div className="max-w-md mx-auto mt-2 mb-8 md:my-8">
             <button
                 onClick={handleDeleteClick}
                 className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"

@@ -41,13 +41,13 @@ const AddPlayer = (props: Props) => {
           bottom: "auto",
           marginRight: "-50%",
           transform: "translate(-50%, -50%)",
-          minWidth: "0%",
-          maxWidth: "50%",
+          width: "30%",
+          minWidth: "300px",
         },
     };
 
     return (
-        <div className="max-w-md mx-auto my-8">
+        <div className="max-w-md mx-auto mt-5 md:my-8">
             <button
                 onClick={() => setIsOpen(true)}
                 className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
