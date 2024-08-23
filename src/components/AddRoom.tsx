@@ -41,8 +41,8 @@ const AddRoom = (props: Props) => {
           bottom: "auto",
           marginRight: "-50%",
           transform: "translate(-50%, -50%)",
-          minWidth: "0%",
-          maxWidth: "50%",
+          width: "30%",
+          minWidth: "300px",
         },
     };
 
@@ -69,13 +69,13 @@ const AddRoom = (props: Props) => {
                         <div className="mt-6 mb-2 flex justify-center items-center gap-7">
                             <button
                                 type="submit"
-                                className="px-3 py-2 md:px-4 bg-green-500 text-white rounded hover:bg-green-600"
+                                className="px-4 py-2 md:px-4 bg-green-500 text-white rounded hover:bg-green-600"
                             >
                                 決定
                             </button>
                             <button
                                 onClick={() => setIsOpen(false)}
-                                className="px-3 py-2 md:px-4 bg-green-500 text-white rounded hover:bg-green-600"
+                                className="px-4 py-2 md:px-4 bg-green-500 text-white rounded hover:bg-green-600"
                             >
                                 閉じる
                             </button>
