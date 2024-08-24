@@ -43,7 +43,7 @@ const AddResultForm = (props: Props) => {
                     else if (props.place == "3") sum -= 5;
                     else if (props.place == "4") sum -= 15;
                     await updateDoc(docRef, {
-                        score: sum
+                        score: Number(sum.toFixed(1))
                     });
                     setSelectedOptionName(null);
                     props.SetRflag(!props.Rflag);
