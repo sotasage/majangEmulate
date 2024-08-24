@@ -32,7 +32,7 @@ export default function Home() {
         <Header />
         <div className="absolute right-1 top-1 flex ">
           <button
-            onClick={() => {router.push("/")}}
+            onClick={() => {router.back()}}
             className="px-4 py-2 bg-green-500 text-white text-2xl rounded hover:bg-green-600"
           >
             退室
