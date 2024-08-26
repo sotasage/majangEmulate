@@ -41,7 +41,7 @@ const AddRoom = (props: Props) => {
           bottom: "auto",
           marginRight: "-50%",
           transform: "translate(-50%, -50%)",
-          width: "30%",
+          width: "25%",
           minWidth: "300px",
         },
     };

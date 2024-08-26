@@ -37,7 +37,7 @@ const AddResult = (props: Props) => {
           bottom: "auto",
           marginRight: "0%",
           transform: "translate(-50%, -50%)",
-          width: "20%",
+          width: "30%",
           minWidth: "350px",
         },
     };
