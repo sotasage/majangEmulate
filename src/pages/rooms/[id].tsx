@@ -29,7 +29,6 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-200">
-        <Header />
         <div className="absolute right-1 top-1 flex ">
           <button
             onClick={() => {router.back()}}
@@ -38,7 +37,7 @@ export default function Home() {
             退室
           </button>
         </div>
-        <div>
+        <div className="mt-10">
             <div className="md:flex gap-x-4">
               <div className="flex justify-center items-center gap-x-4">
                 <AddPlayer SetRflag={setUpdateRankingFlag} Rflag={UpdateRankingFlag} roomID={roomID} />
