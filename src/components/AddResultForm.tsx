@@ -18,7 +18,7 @@ type OptionType = {
   };
 
 const AddResultForm = (props: Props) => {
-    const [score, setScore] = useState('');
+    const [score, setScore] = useState('0');
     const handleScoreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const val = e.target.value;
         if (val === '' || val === '-' || !isNaN(Number(val))) {
