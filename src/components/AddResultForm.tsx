@@ -77,7 +77,6 @@ const AddResultForm = (props: Props) => {
                 <label className="block text-gray-700">得点</label>
                 <input
                     type="text"
-                    inputMode="decimal"
                     pattern="[-0-9]*"
                     value={score}
                     onChange={handleScoreChange}
