@@ -19,8 +19,11 @@ type OptionType = {
 
 const AddResultForm = (props: Props) => {
     const [score, setScore] = useState('');
-    const handleScoreChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setScore(event.target.value);
+    const handleScoreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const val = e.target.value;
+        if (val === '' || val === '-' || !isNaN(Number(val))) {
+            setScore(val);
+        }
     };
     const [selectedOptionName, setSelectedOptionName] = useState<SingleValue<OptionType>>(null);
     const handleChangeName = (e: any) => {
@@ -73,10 +76,12 @@ const AddResultForm = (props: Props) => {
             <div className="w-5/12">
                 <label className="block text-gray-700">得点</label>
                 <input
-                type="number"
-                value={score}
-                onChange={handleScoreChange}
-                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    type="text"
+                    inputMode="decimal"
+                    pattern="[-0-9]*"
+                    value={score}
+                    onChange={handleScoreChange}
+                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
             </div>
         </div>
